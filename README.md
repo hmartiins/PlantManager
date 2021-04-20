@@ -2,7 +2,6 @@
   <img src="assets/icon.png" width="150" />
   <h1>PlantManager</h1>
   <p>🌱 Application to remind people to water their plants 🌱</p>
-  <hr />
   <p>
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/hmartiins/plantmanager?color=%232196F3">
     <a href="https://www.linkedin.com/in/henrique-martins-5b2bb71a5/" target="_blank" rel="noopener noreferrer">
@@ -11,9 +10,6 @@
     <img alt="GitHub" src="https://img.shields.io/github/license/hmartiins/plantmanager?color=%232196F3">
   </p>
 </div>
-
-<br>
-
 
 # 👀 About
 
@@ -37,13 +33,8 @@ Several places use plants, be it their home or business, and nowadays the human 
   - [Prettier](https://prettier.io/)
   - [EditorConfig](https://editorconfig.org/)
 
-<br>
-
 
 ## 💻 Getting started
-
-<br>
-
 
 ### Requirements
 
@@ -80,8 +71,6 @@ $ yarn start
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-<br>
 
 <hr>
 <div align="center">
