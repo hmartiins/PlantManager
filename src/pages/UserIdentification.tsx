@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
+import { Keyboard } from 'react-native';
 import {
   SafeAreaView,
   View,
@@ -7,6 +8,7 @@ import {
   TextInput,
   StyleSheet,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
   Platform
 } from 'react-native';
 import { Button } from '../components/Button';
@@ -44,35 +46,37 @@ export function UserIdentification() {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}  
       >
-        <View style={styles.content}>
-          <View style={styles.form}>
-            <View style={styles.header}>
-              <Text style={styles.emoji}>
-                {isFilled ? '😄' : '😃'}
-              </Text>
-              <Text style={styles.title}>
-                Como podemos{'\n'}
-                chamar você ?
-              </Text>
-            </View>
-            <TextInput
-              placeholder='Digite um nome'
-              style={[
-                styles.input,
-                (isFocused || isFilled) && { borderColor: colors.green } 
-              ]}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              onChangeText={handleInputChange}
-            />
-            <View style={styles.footer}>
-              <Button
-                title="Confirmar"
-                onPress={handleNextScreen}
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.content}>
+            <View style={styles.form}>
+              <View style={styles.header}>
+                <Text style={styles.emoji}>
+                  {isFilled ? '😄' : '😃'}
+                </Text>
+                <Text style={styles.title}>
+                  Como podemos{'\n'}
+                  chamar você ?
+                </Text>
+              </View>
+              <TextInput
+                placeholder='Digite um nome'
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && { borderColor: colors.green } 
+                ]}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
               />
+              <View style={styles.footer}>
+                <Button
+                  title="Confirmar"
+                  onPress={handleNextScreen}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
