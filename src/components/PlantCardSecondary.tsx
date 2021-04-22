@@ -28,16 +28,14 @@ export const PlantCardSecondary = ({ data, ...rest}: PlantProps) => {
       <Text style={styles.title}>
         {data.name}
       </Text>
-      <View>
-        <Text style={styles.details}>
-          <Text style={styles.timeLabel}>
-            Regar às
-          </Text>
-          <Text style={styles.time}>
-            {data.hour}
-          </Text>
-        </Text> 
-      </View>
+      <View style={styles.details}>
+        <Text style={styles.timeLabel}>
+          Regar às
+        </Text>
+        <Text style={styles.time}>
+          {data.hour}
+        </Text>
+      </View> 
     </RectButton>
   );
 }
