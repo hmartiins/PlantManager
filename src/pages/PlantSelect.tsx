@@ -70,6 +70,7 @@ export function PlantSelect() {
 
     if(page > 1) {
       setPlants(oldValue => [...oldValue, ...data])
+      setFilteredPlants(oldValue => [...oldValue, ...data])
     } else {
       setPlants (data);
       setFilteredPlants(data);
