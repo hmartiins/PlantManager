@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Image,
-  FlatList,
   TouchableOpacity,
   Platform,
-  ScrollView,
   Alert
 } from 'react-native';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
@@ -22,7 +20,7 @@ import fonts from '../styles/fonts';
 
 import { Button } from '../components/Button';
 import { format, isBefore } from 'date-fns';
-import { PlantProps, plantSave, plantLoad } from '../libs/storage';
+import { PlantProps, plantSave } from '../libs/storage';
 
 interface Params {
   plant: PlantProps;
@@ -67,7 +65,7 @@ export function PlantSave() {
         subtitle: 'Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com muito cuidado',
         buttonTitle: 'Muito Obrigado',
         icon: 'hug',
-        nextScreen: 'MyPlant',
+        nextScreen: 'MyPlants',
       });
     } catch (err) {
       Alert.alert('Não foi possível salvar !');
