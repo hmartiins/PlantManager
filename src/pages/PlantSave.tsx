@@ -11,7 +11,7 @@ import {
   Alert
 } from 'react-native';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
-import { useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
 import { SvgFromUri } from 'react-native-svg';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
@@ -22,20 +22,10 @@ import fonts from '../styles/fonts';
 
 import { Button } from '../components/Button';
 import { format, isBefore } from 'date-fns';
+import { PlantProps, plantSave, plantLoad } from '../libs/storage';
 
 interface Params {
-  plant: {
-    id: string;
-    name: string;
-    about: string;
-    water_tips: string;
-    photo: string;
-    environments: [string];
-    frequency: {
-      times: number,
-      repeat_every: string;
-    }
-  }
+  plant: PlantProps;
 }
 
 export function PlantSave() {
@@ -43,7 +33,9 @@ export function PlantSave() {
   const [showDatePicker, setShowDatePicker] = useState(Platform.OS == 'ios');
 
   const route = useRoute();
-  const { plant } = route.params as Params; 
+  const { plant } = route.params as Params;
+
+  const navigation = useNavigation();
 
   function handleChangeTime(event: Event, dateTime: Date | undefined) {
     if(Platform.OS == 'android') {
@@ -61,6 +53,25 @@ export function PlantSave() {
 
   function handleOpenDateTimePickerForAndroid() {
     setShowDatePicker(oldState => !oldState);
+  }
+
+  async function handleSave() {     
+    try {
+      await plantSave({
+        ...plant,
+        dateTimeNotification: selectedDateTime
+      });
+
+      navigation.navigate('Confirmation', {
+        title: 'Tudo certo',
+        subtitle: 'Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com muito cuidado',
+        buttonTitle: 'Muito Obrigado',
+        icon: 'hug',
+        nextScreen: 'MyPlant',
+      });
+    } catch (err) {
+      Alert.alert('Não foi possível salvar !');
+    }
   }
 
   return(
@@ -119,7 +130,7 @@ export function PlantSave() {
 
         <Button 
           title="Cadastrar Planta"
-          onPress={() => {}}
+          onPress={handleSave}
         />
       </View>
     </View>

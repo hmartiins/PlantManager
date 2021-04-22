@@ -17,23 +17,11 @@ import api from '../services/api';
 import { EnvironmentButton } from '../components/EnvironmentButton';
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { Load } from '../components/Load';
+import { PlantProps } from '../libs/storage';
 
 interface EnvironmentsProps {
   title: string;
   key: string;
-}
-
-interface PlantProps {
-  id: string;
-  name: string;
-  about: string;
-  water_tips: string;
-  photo: string;
-  environments: [string];
-  frequency: {
-    times: number,
-    repeat_every: string;
-  }
 }
 
 export function PlantSelect() {

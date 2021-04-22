@@ -29,9 +29,18 @@ export function UserIdentification() {
       return Alert.alert('Me diga como devo te chamar 🤔')
     }
 
-    await AsyncStorage.setItem('@plantmanager:username', name);
-
-    navigation.navigate('Confirmation')
+    try {
+      await AsyncStorage.setItem('@plantmanager:username', name);
+      navigation.navigate('Confirmation', {
+        title: 'Prontinho',
+        subtitle: 'Agora vamos começar a cuidar das suas plantinhas com muito cuidado',
+        buttonTitle: 'Começar',
+        icon: 'smile',
+        nextScreen: 'PlantSelect',
+      });
+    } catch {
+      return Alert.alert('Não foi possível salvar o seu nome');
+    }
   }
 
   function handleInputBlur() {
