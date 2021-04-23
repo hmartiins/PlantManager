@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { 
   useFonts,
   Jost_400Regular,

@@ -22,6 +22,7 @@
     "expo": "~41.0.0",
     "expo-app-loading": "^1.0.3",
     "expo-font": "~9.1.0",
+    "expo-notifications": "~0.11.5",
     "expo-status-bar": "~1.0.4",
     "json-server": "^0.16.3",
     "lottie-react-native": "3.5.0",
